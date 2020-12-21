@@ -12,7 +12,19 @@ float *remontee(float A[N][N], float B[N], int n)
 
   /******Implement the solution here******/
   /***************************************/
-  
+   float *x;
+  x = malloc(sizeof(float) * n);
+  /***************************************/
+  x[0]=B[0]/A[0][0];
+  for(int i=1;i<n;i++)
+  {
+      int s=0;
+      for(int j=0;j<=i-1;j++)
+      {
+          s=A[i][j]*x[j];
+      }
+      x[i]=(B[i]-s)/A[i][i];
+  }
   /***************************************/
   return x;
 }
