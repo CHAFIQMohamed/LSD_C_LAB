@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #define N 10
 
-float *remontee(float A[N][N], float B[N], int n)
+float *descente(float A[N][N], float B[N], int n)
 {
 
   /* A hint: you cant return an array which is allocated in the stack memory. \
@@ -58,7 +58,7 @@ int main()
   }
 
   /* The calculation of the result */
-  x = remontee(A, B, n);
+  x = descente(A, B, n);
 
   /* Printing the results */
   printf("\nThe resulting vector: [");

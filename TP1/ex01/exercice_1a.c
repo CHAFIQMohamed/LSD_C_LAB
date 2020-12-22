@@ -3,7 +3,7 @@
 #define N 10
 
 
-float *descente(float A[N][N], float B[N], int n)
+float *remontee(float A[N][N], float B[N], int n)
 {
   float   *x;
 
@@ -58,7 +58,7 @@ int main()
   }
 
   /* The calculation of the result */
-  x = descente(A, B, n);
+  x = remontee(A, B, n);
   
   /* Printing the results */
   printf("\nThe resulting vector: [");
