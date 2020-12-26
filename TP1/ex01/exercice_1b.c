@@ -18,7 +18,7 @@ float *descente(float A[N][N], float B[N], int n)
   x[0]=B[0]/A[0][0];
   for(int i=1;i<n;i++)
   {
-      int s=0;
+      float s=0;
       for(int j=0;j<=i-1;j++)
       {
           s=A[i][j]*x[j];
