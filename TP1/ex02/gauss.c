@@ -13,7 +13,7 @@ float *remontee(float A[N][N], float B[N], int n)
   x[n-1]=B[n-1]/A[n-1][n-1];
   for(int i=n-2;i>-1;i--)
   {
-      int s=0;
+      float s=0;
       for(int j=i+1;j<n+1;j++)
       {
           s=s+A[i][j]*x[j];
@@ -87,4 +87,3 @@ int main()
   for (int i = 0; i < n; i++)
     printf("%f%c", x[i], ",]"[i == n - 1]);
 }
-
