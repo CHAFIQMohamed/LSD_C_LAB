@@ -12,7 +12,7 @@ float *descente(float A[N][N], float B[N], int n)
   x[0]=B[0]/A[0][0];
   for(int i=1;i<n;i++)
   {
-      int s=0;
+      float s=0;
       for(int j=0;j<=i-1;j++)
       {
           s=A[i][j]*x[j];
@@ -33,7 +33,7 @@ float *remontee(float A[N][N], float B[N], int n)
  x[n-1]=B[n-1]/A[n-1][n-1];
  for(int i=n-2;i>=0;i--)
   {
-      int s=0;
+      float s=0;
       for(int j=i+1;j<n;j++)
       {
           s=s+A[i][j]*x[j];
@@ -61,28 +61,37 @@ float *cholseky(float A[N][N], float B[N], int n)
 	{
 		for(int i=1;i<=j-1;i++)
 			c[i][j]=0;
-		int s=0;
+		float s=0;
 		for(int k=0;k<=j-1;k++)
 			s=s+c[j][k]*c[j][k];
 		c[j][j]=sqrt(A[j][j]-s);
 		for(int i=j+1;i<n;i++)
 		{
-			int d=0;
+			float d=0;
 			for(int k=0;k<=j-1;k++)
 				d+=c[i][k]*c[j][k];
 			c[i][j]=(A[i][j]-d)/c[j][j];
 		}
 	}
-	float *Y;
-	Y=malloc(sizeof(float) *n);
 	float ct[n][n];
 	for(int i=0 ; i<n;i++)
 		for(int j=0 ; j<n ;j++)
 			ct[i][j]=c[j][i];
+	// show the c matrix 
+	for(int i=0 ; i<n;i++)
+	{
+                for(int j=0 ; j<n ;j++)
+			printf("\n%f ",c[i][j]);
+		printf("\n");
+	}
 	//on va resoudre c*y=b par la methode de descente
-	Y=descente(c , B , n);
+	float *Y=descente(c , B , n);
+	//
+	for(int i=0;i<n;i++)
+		printf("%f\t",Y[i]);
 	//on va resoudre ct*x=y par la methode de remontee
 	x=remontee(ct , Y, n);
+
 	return x;
 }
 
