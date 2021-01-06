@@ -7,13 +7,13 @@
 float *descente(float A[N][N], float B[N], int n)
 {
   float *x;
-  x = malloc(sizeof(float) * n);
+  x = malloc(sizeof(double) * n);
   /***************************************/
   x[0]=B[0]/A[0][0];
   for(int i=1;i<n;i++)
   {
       float s=0;
-      for(int j=0;j<=i-1;j++)
+      for(int j=0;j<=i;j++)
       {
           s=A[i][j]*x[j];
       }
@@ -26,7 +26,7 @@ float *descente(float A[N][N], float B[N], int n)
 float *remontee(float A[N][N], float B[N], int n)
 {
   float *x;
-  x = malloc(sizeof(float) * n);
+  x = malloc(sizeof(double) * n);
 
 
  x[n-1]=B[n-1]/A[n-1][n-1];
@@ -48,7 +48,7 @@ float *remontee(float A[N][N], float B[N], int n)
 
 float *cholseky(float A[N][N], float B[N], int n)
 {
-	float c[n][n];
+	float c[N][N];
 	// on calcule les coefficients de 1ere colonne
 	c[0][0]=sqrt(A[0][0]);
 	for(int i=1;i<n;i++)
@@ -70,7 +70,7 @@ float *cholseky(float A[N][N], float B[N], int n)
 			c[i][j]=(A[i][j]-d)/c[j][j];
 		}
 	}
-	float ct[n][n];
+	float ct[N][N];
 	for(int i=0 ; i<n;i++)
 		for(int j=0 ; j<n ;j++)
 			ct[i][j]=c[j][i];
@@ -82,7 +82,8 @@ float *cholseky(float A[N][N], float B[N], int n)
 		printf("\n");
 	}
 	//on va resoudre c*y=b par la methode de descente
-	float *Y=descente(c , B , n);
+	float *Y;
+	Y=descente(c , B , n);
 	//show Y
 	for(int i=0;i<n;i++)
       		printf("%f\t",Y[i]);
@@ -130,6 +131,6 @@ int main()
   /* Printing the results */
   printf("\nThe resulting vector: [");
   for (int i = 0; i < n; i++)
-    printf("%f%c", x[i], ",]"[i == n - 1]);
+  	printf("%f%c", x[i], ",]"[i == n - 1]);
   return (0);
 }
