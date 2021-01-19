@@ -10,7 +10,7 @@ float *descente(float A[N][N], float B[N], int n)
   x = malloc(sizeof(double) * n);
   /***************************************/
   x[0]=B[0]/A[0][0];
-  for(int i=1;i<n;i++)
+  for(int i=0;i<n;i++)
   {
       float s=0;
       for(int j=0;j<=i;j++)
