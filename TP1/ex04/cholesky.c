@@ -56,7 +56,7 @@ float *cholseky(float A[N][N], float B[N], int n)
 
 	for(int j=1;j<n;j++)
 	{
-		for(int i=1;i<=j-1;i++)
+		for(int i=0;i<=j-1;i++)
 			c[i][j]=0;
 		float s=0;
 		for(int k=0;k<=j-1;k++)
